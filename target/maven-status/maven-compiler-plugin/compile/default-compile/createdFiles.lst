@@ -1,6 +1,0 @@
-com/mytwitter/db/TwitterAuth.class
-com/mytwitter/core/TweetPublish.class
-com/mytwitter/resources/TweetResource.class
-com/mytwitter/twitterConfiguration.class
-com/mytwitter/core/UserTimeline.class
-com/mytwitter/twitterApplication.class

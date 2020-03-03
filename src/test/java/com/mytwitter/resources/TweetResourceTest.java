@@ -1,8 +1,7 @@
 package com.mytwitter.resources;
 
 import org.easymock.EasyMock;
-import org.easymock.IExpectationSetters;
-import org.junit.jupiter.api.BeforeAll;
+
 import twitter4j.*;
 import org.junit.*;
 import twitter4j.json.DataObjectFactory;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.createNiceMock;
 import static org.junit.Assert.assertEquals;
 
 public class TweetResourceTest {
