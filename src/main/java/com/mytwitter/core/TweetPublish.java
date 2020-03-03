@@ -7,13 +7,13 @@ import twitter4j.TwitterException;
 
 
 public class TweetPublish {
-    public ResponseList<Status> PublishTweet(Twitter twitterInstance, String newPost) {
+    public boolean PublishTweet(Twitter twitterInstance, String newPost) {
         try {
             twitterInstance.updateStatus(newPost);
-        } catch (TwitterException te) {
-            te.printStackTrace();
+            return true;
+        } catch (Exception e) {
+            return false;
         }
-        return null;
     }
 }
 

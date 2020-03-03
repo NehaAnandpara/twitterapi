@@ -5,10 +5,7 @@ import com.mytwitter.core.TweetPublish;
 import com.mytwitter.core.UserTimeline;
 import com.mytwitter.db.TwitterAuth;
 import org.springframework.web.bind.annotation.RequestBody;
-import twitter4j.ResponseList;
-import twitter4j.Status;
-import twitter4j.Twitter;
-import twitter4j.TwitterFactory;
+import twitter4j.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -20,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class TweetResource {
 
-
+     boolean postStatus;
 
     @GET
     @Timed
@@ -33,20 +30,21 @@ public class TweetResource {
         setAuth.getAuth(twitterInstance);
         UserTimeline userTimelineInstance = new UserTimeline();
         statuses = userTimelineInstance.GetTimeline(twitterInstance);
+        System.out.println(statuses);
         return statuses;
     }
 
     @POST
     @Timed
     @Path("tweet")
-    public ResponseList<Status> postTweet(@RequestBody String tweet){
+    public boolean postTweet(@RequestBody String tweet) {
         // implementation, create twitter instance, take string tweet, call TweetPublish.PublishTweet
-        ResponseList<Status> timelineStatuses;
         Twitter twitterInstance = new TwitterFactory().getInstance();
         TwitterAuth setAuth = new TwitterAuth();
         setAuth.getAuth(twitterInstance);
         TweetPublish publishInstance = new TweetPublish();
-        timelineStatuses = publishInstance.PublishTweet(twitterInstance, tweet);
-        return timelineStatuses;
+        postStatus = publishInstance.PublishTweet(twitterInstance, tweet);
+        return postStatus;
+
     }
 }
